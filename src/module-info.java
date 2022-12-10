@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author sharp
- *
- */
-module FewPzDiscordBot {
-}
