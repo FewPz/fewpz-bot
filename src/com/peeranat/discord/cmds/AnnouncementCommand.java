@@ -28,12 +28,14 @@ public class AnnouncementCommand implements CommandExecutor {
 		MessageBuilder builder = null;
 		ClassroomEnum subject = ClassroomEnum.valueOf(args.get(0).getStringValue().get());
 		String text = args.get(1).getStringValue().get();
+		String tutorDate = args.get(2).getStringValue().get();
+		String tutorTime = args.get(3).getStringValue().get();
 		
-		if (args.size() == 3) {
-			String special = args.get(2).getStringValue().get();
-			builder = discord.getClassroom().sendAnnouncement(subject, text, special);
-		} else if (args.size() == 2) {
-			builder = discord.getClassroom().sendAnnouncement(subject, text);
+		if (args.size() == 5) {
+			String special = args.get(4).getStringValue().get();
+			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text, special);
+		} else if (args.size() == 4) {
+			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text);
 		}
 		
 		TextChannel textChannel = discord.getTextChannel(discord.getCredential().asLong("DEV_ID"));

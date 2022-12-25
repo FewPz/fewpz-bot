@@ -15,11 +15,11 @@ public class Classroom {
 		this.discord = discord;
 	}
 	
-	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String context) {
-		return sendAnnouncement(classroomEnum, context, null);
+	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String tutorDate, String tutorTime, String context) {
+		return sendAnnouncement(classroomEnum, tutorDate, tutorTime, context, null);
 	}
 	
-	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String context, String special) {
+	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String tutorDate, String tutorTime, String context, String special) {
 		long roleID = discord.getCredential().asLong("IT");
 		String mentionTag = discord.getServer().getRoleById(roleID).get().getMentionTag();
 		MessageBuilder builder = new MessageBuilder();
@@ -29,7 +29,7 @@ public class Classroom {
 		StringBuilder text = new StringBuilder();
 		text.append("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n");
 		text.append("Dear: " + mentionTag + "\n");
-		text.append("ในวันที่ " + StringUtil.date() + " 20:00 น." + "\n");
+		text.append("ในวันที่ " + tutorDate + " "+ tutorTime +" น." + "\n");
 		text.append("\n");
 		text.append("เรามีนัดกัน เจอกันในรายวิชา "+ StringUtil.capitalize(classroomEnum.getName()) +"\n");
 		text.append("หรือเรียกสั้นๆ ได้ว่าวิชา **"+classroomEnum.getShortName()+"**\n");
