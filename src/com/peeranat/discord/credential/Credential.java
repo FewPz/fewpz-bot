@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Credential {
@@ -52,13 +51,6 @@ public class Credential {
 	
 	public long asLong(String key) {
 		return Long.parseLong(asString(key));
-	}
-	
-	public void debug() {
-		System.out.println("Get All key and value in credential");
-		for (Entry<String, Object> _value : values.entrySet()) {
-			System.out.println(_value.getKey() + " : " + _value.getValue());
-		}
 	}
 	
 }
