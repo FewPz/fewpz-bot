@@ -25,6 +25,7 @@ public class Classroom {
 		MessageBuilder builder = new MessageBuilder();
 		AllowedMentions build = new AllowedMentionsBuilder().setMentionUsers(true).setMentionRoles(true).build();
 		
+		
 		StringBuilder text = new StringBuilder();
 		text.append("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n");
 		text.append("Dear: " + mentionTag + "\n");

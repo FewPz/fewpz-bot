@@ -26,4 +26,22 @@ public class StringUtil {
 		int year = cal.get(Calendar.YEAR);
 		return days + "/" + month + "/" + (year+543);
 	}
+	
+	public static int days() {
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int days = cal.get(Calendar.DAY_OF_MONTH);
+		return days;
+	}
+	
+	public static int month() {
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int month = cal.get(Calendar.MONTH);
+		return month;
+	}
+	
+	public static int year() {
+		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+		int year = cal.get(Calendar.YEAR);
+		return year;
+	}
 }
