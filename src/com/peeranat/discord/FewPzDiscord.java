@@ -54,6 +54,7 @@ public class FewPzDiscord {
 				SlashCommandOption.createStringOption("เนื้อหา", "เนื้อหาที่อยากจะสอน หากมีมากกว่า 2 เรื่องให้ใส่ : (semi-colon) ไว้", true),
 				SlashCommandOption.createStringOption("วันที่เวลาเรียน", "วันที่", true),
 				SlashCommandOption.createStringOption("ช่วงเวลาเรียน", "ช่วงเวลาเรียน", true),
+				SlashCommandOption.createAttachmentOption("ไฟล์", "ไฟล์เนื้อหาการสอน", false),
 				SlashCommandOption.createStringOption("เนื้อหาเพิ่มเติม", "จะใส่หรือไม่ใส่ก็ได้ ไม่บังคับ", false) 
 		)).createForServer(getServer()).join();
 	}

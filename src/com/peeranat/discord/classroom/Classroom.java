@@ -1,5 +1,8 @@
 package com.peeranat.discord.classroom;
 
+import java.io.IOException;
+
+import org.javacord.api.entity.Attachment;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.mention.AllowedMentions;
 import org.javacord.api.entity.message.mention.AllowedMentionsBuilder;
@@ -16,10 +19,10 @@ public class Classroom {
 	}
 	
 	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String tutorDate, String tutorTime, String context) {
-		return sendAnnouncement(classroomEnum, tutorDate, tutorTime, context, null);
+		return sendAnnouncement(classroomEnum, tutorDate, tutorTime, context, null, null);
 	}
 	
-	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String tutorDate, String tutorTime, String context, String special) {
+	public MessageBuilder sendAnnouncement(ClassroomEnum classroomEnum, String tutorDate, String tutorTime, String context, Attachment attachment, String special) {
 		long roleID = discord.getCredential().asLong("IT");
 		String mentionTag = discord.getServer().getRoleById(roleID).get().getMentionTag();
 		MessageBuilder builder = new MessageBuilder();
@@ -46,6 +49,13 @@ public class Classroom {
 		}
 		text.append("แล้วพบกัน, See ya!\n");
 		text.append("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n");
+		if (attachment != null) {
+			try {
+				builder.addAttachment(attachment.downloadAsInputStream(), attachment.getFileName());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		builder.setAllowedMentions(build);
 		builder.append(text.toString());
 		return builder;

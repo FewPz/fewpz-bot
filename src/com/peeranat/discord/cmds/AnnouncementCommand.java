@@ -2,6 +2,7 @@ package com.peeranat.discord.cmds;
 
 import java.util.List;
 
+import org.javacord.api.entity.Attachment;
 import org.javacord.api.entity.channel.TextChannel;
 import org.javacord.api.entity.message.MessageBuilder;
 import org.javacord.api.entity.message.component.ActionRow;
@@ -31,11 +32,16 @@ public class AnnouncementCommand implements CommandExecutor {
 		String tutorDate = args.get(2).getStringValue().get();
 		String tutorTime = args.get(3).getStringValue().get();
 		
-		if (args.size() == 5) {
-			String special = args.get(4).getStringValue().get();
-			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text, special);
+		if (args.size() == 6) {
+			Attachment attachment = args.get(4).getAttachmentValue().get();
+			String special = args.get(5).getStringValue().get();
+			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text, attachment, special);
 		} else if (args.size() == 4) {
 			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text);
+		} else if (args.size() == 5) {
+			Attachment attachment = args.get(4).getAttachmentValue().get();
+			builder = discord.getClassroom().sendAnnouncement(subject, tutorDate, tutorTime, text, attachment, null);
+			
 		}
 		
 		TextChannel textChannel = discord.getTextChannel(discord.getCredential().asLong("DEV_ID"));
